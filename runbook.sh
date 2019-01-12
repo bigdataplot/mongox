@@ -1,3 +1,18 @@
+sudo mkdir -p /apps/mongo
+sudo chmod 770 /apps/mongo
+sudo chown root:$DGNM /apps/mongo
+
+
+
+sudo usermod -u 2049 mongodb
+sudo find / -user 999 -exec chown -h 2049 {} \;
+
+sudo groupmod -g 2049 mongodb
+sudo find / -group 999 -exec chgrp -h 2049 {} \;
+sudo usermod -g 2049 mongodb
+
+
+
 
 sudo docker run --detach \
     --name mongo-lab \
