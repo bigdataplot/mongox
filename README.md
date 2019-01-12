@@ -2,7 +2,8 @@
 - ### MongoDB on Docker with Auth Enabled
 
 - ### Bring up MongoDB container
-shell```
+
+```shell
 sudo docker run --detach \
     --name mongo-lab \
     --restart always \
@@ -12,13 +13,15 @@ sudo docker run --detach \
 ```
 
 - ### Configure Auth in mongoDB container (Skip this if Auth is set)
-shell```
+
+```shell
 sudo docker exec -it mongo-lab bash
 ```
 
-shell```
-# Create the admin user
+```shell
 MONGODB_ADMIN_USER=${MONGODB_ADMIN_USER:-"admin"}
 MONGODB_ADMIN_PASS=${MONGODB_ADMIN_PASS:-"4dmP4ssw0rd"}
+```
+```shell
 mongo admin --eval "db.createUser({user: '$MONGODB_ADMIN_USER', pwd: '$MONGODB_ADMIN_PASS', roles:[{role:'root',db:'admin'}]});"
 ```
