@@ -1,8 +1,10 @@
 #sudo rm -rf /apps/mongodb
 
 sudo mkdir -p /apps/mongodb/data
+
 sudo chmod 770 /apps/mongodb
 sudo chown 2049:2049 /apps/mongodb
+
 sudo chmod 770 /apps/mongodb/data
 sudo chown 2049:2049 /apps/mongodb/data
 
@@ -26,7 +28,6 @@ sudo docker run --detach \
     --publish 27017:27017 \
     --volume /apps/mongodb/data/db:/data/db \
     bigdataplot/mongo:1.21 --auth
-
 
 
 sudo docker exec -it mongo-lab bash
