@@ -1,6 +1,6 @@
 # Mongox - MongoDB on Docker with Auth Enabled
 
-- ### Prepare Local Environment
+- ### (Optional) Prepare Local Environment
 ```shell
 sudo mkdir -p /apps/mongodb/data
 ```
@@ -21,18 +21,19 @@ sudo docker build -t bigdataplot/mongo:1.21 .
 ```shell
 sudo docker run --detach \
     --name mongo-lab \
+    --restart always \
     --publish 27017:27017 \
     --volume /apps/mongodb/data/db:/data/db \
-    bigdataplot/mongo:1.21
+    bigdataplot/mongo:1.21 --auth
 ```
 
-- ### (Optional) Reset 'admin' Password on Local DB Folder
+- ### (Optional) Reset and Rebuild
+#### Reset 'admin' Password on Local DB Folder
 ```shell
 sudo docker exec mongo-lab /apps/mongodb/set_auth.sh
 ```
-_'4dmP4ssw0rd' by default_
-
-- ### (Optional) Rebuild MongoDB Container for Local DB Folder
+_* Reset to '4dmP4ssw0rd' by default_
+#### Rebuild MongoDB Container for Local DB Folder
 ```shell
 sudo docker rm mongo-lab
 ```
