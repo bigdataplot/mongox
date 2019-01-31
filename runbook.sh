@@ -16,6 +16,7 @@ sudo docker run --detach \
     --name mongo-lab \
     --publish 27017:27017 \
     --volume /apps/mongodb/data/db:/data/db \
+    --volume /etc/localtime:/etc/localtime:ro \
     bigdataplot/mongo:1.21
 
 sudo docker exec mongo-lab /apps/mongodb/set_auth.sh
@@ -27,6 +28,7 @@ sudo docker run --detach \
     --restart always \
     --publish 27017:27017 \
     --volume /apps/mongodb/data/db:/data/db \
+    --volume /etc/localtime:/etc/localtime:ro \
     bigdataplot/mongo:1.21 --auth
 
 
