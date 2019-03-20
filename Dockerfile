@@ -9,12 +9,12 @@ MAINTAINER Yongjian(Ken) Ouyang <yongjian.ouyang@outlook.com>
 
 
 ## Fix UID/GID
-RUN usermod -u 2049 mongodb
-RUN find / -user 999 -exec chown -h 2049 {} \; ; exit 0
+RUN usermod -u 11001 mongodb
+RUN find / -user 999 -exec chown -h 11001 {} \; ; exit 0
 
-RUN groupmod -g 2049 mongodb
-RUN find / -group 999 -exec chgrp -h 2049 {} \; ; exit 0
-RUN usermod -g 2049 mongodb
+RUN groupmod -g 11001 mongodb
+RUN find / -group 999 -exec chgrp -h 11001 {} \; ; exit 0
+RUN usermod -g 11001 mongodb
 
 
 ## Base Update
@@ -31,10 +31,11 @@ RUN sed -i 's/\r$//' /apps/mongodb/set_auth.sh && \
 
 
 ## Cleaning
-RUN apt-get clean -y && \
-    apt-get autoremove -y
+RUN apt-get autoremove -y && \
+	apt-get clean
 
 
 ## Execute
 EXPOSE 27017 27017
-CMD ["mongod"]
+#CMD ["mongod"]
+# Use mongod --auth for first run
