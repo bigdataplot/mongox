@@ -24,10 +24,10 @@ RUN apt-get update && \
 
 
 ## AUTH Configure File
-COPY set_auth.sh /apps/mongodb/set_auth.sh
+COPY set_auth.sh /containerapps/mongodb/set_auth.sh
 
-RUN sed -i 's/\r$//' /apps/mongodb/set_auth.sh && \
-    chmod +x /apps/mongodb/set_auth.sh
+RUN sed -i 's/\r$//' /containerapps/mongodb/set_auth.sh && \
+    chmod +x /containerapps/mongodb/set_auth.sh
 
 
 ## Cleaning
