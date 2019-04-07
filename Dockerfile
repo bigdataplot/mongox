@@ -37,5 +37,4 @@ RUN apt-get autoremove -y && \
 
 ## Execute
 EXPOSE 27017 27017
-#CMD ["mongod"]
-# Use mongod --auth for first run
+CMD ["mongod"]
